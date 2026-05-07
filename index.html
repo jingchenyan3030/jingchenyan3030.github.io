@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Chenyan Jing | Computer Vision & Robotics Perception</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    header {
+      margin-bottom: 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .name {
+      font-size: 48px;
+      line-height: 1.1;
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .bio {
+      font-size: 17px;
+      color: #374151;
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .link-button {
+      display: inline-block;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 14px;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .link-button.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .profile-card {
+      background: linear-gradient(145deg, #ffffff, #eef4ff);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card h3 {
+      margin-top: 0;
+      margin-bottom: 14px;
+      font-size: 18px;
+    }
+
+    .profile-card ul {
+      padding-left: 18px;
+      margin: 0;
+      color: #4b5563;
+      font-size: 15px;
+    }
+
+    section {
+      margin-top: 52px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-size: 23px;
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .project-status {
+      white-space: nowrap;
+      font-size: 13px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .project-status.placeholder {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 18px;
+    }
+
+    .tag {
+      font-size: 13px;
+      color: #374151;
+      background: #f3f4f6;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+
+    .project-summary {
+      color: #374151;
+      margin-bottom: 18px;
+    }
+
+    .project-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 18px;
+    }
+
+    .project-content h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .project-content ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #4b5563;
+    }
+
+    .visual-placeholder {
+      margin-top: 18px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 16px;
+      background: #f8fafc;
+      padding: 26px;
+      color: #64748b;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .small-link {
+      font-size: 14px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .mini-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .mini-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .mini-card p {
+      color: #4b5563;
+      margin-bottom: 14px;
+    }
+
+    footer {
+      margin-top: 72px;
+      padding-top: 26px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .name {
+        font-size: 38px;
+      }
+
+      .project-header {
+        flex-direction: column;
+      }
+
+      .project-content {
+        grid-template-columns: 1fr;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="hero">
+        <div>
+          <h1 class="name">Chenyan Jing</h1>
+          <div class="subtitle">Computer Vision / Robotics Perception / Medical AI</div>
+
+          <p class="bio">
+            Computer Vision and Robotics Perception engineer with experience building PyTorch-based
+            vision pipelines for surgical video understanding, keypoint localization,
+            segmentation-guided refinement, monocular depth estimation, and real-time 3D reconstruction.
+            Strong background in model training, inference, dataset curation, quantitative evaluation,
+            OpenCV pipelines, and robotics perception applications. Experienced in applying deep learning
+            and geometric vision methods to medical imaging, surgical robotics, and video-based perception tasks.
+          </p>
+
+          <div class="links">
+            <a class="link-button primary" href="https://github.com/jingchenyan3030" target="_blank">GitHub</a>
+            <a class="link-button" href="mailto:your-email@example.com">Email</a>
+            <a class="link-button" href="#">CV</a>
+            <a class="link-button" href="#">Google Scholar</a>
+            <a class="link-button" href="#">LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <h3>Research Interests</h3>
+          <ul>
+            <li>Surgical video understanding</li>
+            <li>Robotics perception</li>
+            <li>Medical AI and image-guided intervention</li>
+            <li>3D vision and geometric reconstruction</li>
+            <li>Temporal modeling for video perception</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-desc">
+        Selected projects in computer vision, medical AI, surgical perception, temporal modeling,
+        and robotics-related visual understanding.
+      </p>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <h3 class="project-title">Monocular 3D Human Pose and Metric Depth Estimation</h3>
+              <div class="tags">
+                <span class="tag">3D Vision</span>
+                <span class="tag">YOLOv8-Pose</span>
+                <span class="tag">Depth Anything V2</span>
+                <span class="tag">LiDAR Validation</span>
+                <span class="tag">ARKit Intrinsics</span>
+              </div>
+            </div>
+            <span class="project-status">Available</span>
+          </div>
+
+          <p class="project-summary">
+            Built a monocular 3D reconstruction pipeline that combines 2D human pose estimation,
+            foundation-model depth prediction, camera intrinsic calibration, and LiDAR-based validation
+            for metric 3D pose and depth estimation.
+          </p>
+
+          <div class="project-content">
+            <div>
+              <h4>Pipeline</h4>
+              <ul>
+                <li>YOLOv8-Pose for 2D human keypoint detection.</li>
+                <li>Depth Anything V2 for monocular depth estimation.</li>
+                <li>iPhone ARKit camera intrinsics for geometric projection.</li>
+                <li>RGB-to-3D keypoint reconstruction using depth and camera calibration.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4>Evaluation and Visualization</h4>
+              <ul>
+                <li>LiDAR-based validation for metric depth consistency.</li>
+                <li>3D reconstruction visualization of human pose.</li>
+                <li>Short demo video or GIF for real-time reconstruction.</li>
+                <li>Quantitative and qualitative comparison of estimated depth.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="visual-placeholder">
+            Add 3D reconstruction visualization, depth map, pose overlay, or demo GIF here.
+          </div>
+
+          <div class="project-links">
+            <a class="small-link" href="https://github.com/jingchenyan3030/monucular_depth_estimation" target="_blank">
+              GitHub Repository
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <h3 class="project-title">Temporal Decoder for Surgical Tool Tracking</h3>
+              <div class="tags">
+                <span class="tag">Surgical Tool Tracking</span>
+                <span class="tag">HRNet</span>
+                <span class="tag">Transformer Decoder</span>
+                <span class="tag">Temporal Modeling</span>
+                <span class="tag">Keypoint Tracking</span>
+              </div>
+            </div>
+            <span class="project-status">Available</span>
+          </div>
+
+          <p class="project-summary">
+            Developed a temporal modeling pipeline for surgical tool tracking by combining frame-level
+            visual feature extraction with sequence-level decoding to improve temporal consistency in
+            surgical video perception.
+          </p>
+
+          <div class="project-content">
+            <div>
+              <h4>Method</h4>
+              <ul>
+                <li>HRNet-based feature extraction for spatial keypoint representation.</li>
+                <li>Transformer temporal decoder for modeling inter-frame dependencies.</li>
+                <li>Frame sequence processing for surgical tool tracking.</li>
+                <li>Temporal consistency analysis across video frames.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4>Outputs</h4>
+              <ul>
+                <li>Tracking and temporal consistency visualization.</li>
+                <li>Comparison between frame-wise and temporal predictions.</li>
+                <li>Failure case analysis under occlusion, specularity, and tool motion.</li>
+                <li>Potential extension toward surgical workflow understanding.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="visual-placeholder">
+            Add tracking visualization, temporal decoder diagram, or qualitative video frames here.
+          </div>
+
+          <div class="project-links">
+            <a class="small-link" href="#">Project Page Coming Soon</a>
+            <a class="small-link" href="#">Code Coming Soon</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Additional Projects</h2>
+      <p class="section-desc">
+        Additional research and robotics projects. These sections are reserved for future project pages,
+        paper links, code repositories, and visual results.
+      </p>
+
+      <div class="two-column">
+        <article class="mini-card">
+          <h3>Mask-Guided Surgical Tool Keypoint Localization</h3>
+          <p>
+            Surgical tool tip and anchor localization using multi-frame heatmap prediction,
+            SAM2-derived mask priors, and segmentation-guided refinement.
+          </p>
+          <div class="tags">
+            <span class="tag">Surgical CV</span>
+            <span class="tag">SAM2</span>
+            <span class="tag">Heatmap Regression</span>
+            <span class="tag">Medical AI</span>
+          </div>
+          <a href="#">Coming Soon</a>
+        </article>
+
+        <article class="mini-card">
+          <h3>Predictive Retinal Motion Compensation</h3>
+          <p>
+            iOCT/RGB-D-based retinal motion signal extraction and temporal forecasting
+            for robotic retinal intervention.
+          </p>
+          <div class="tags">
+            <span class="tag">Medical Robotics</span>
+            <span class="tag">iOCT/RGB-D</span>
+            <span class="tag">RANSAC</span>
+            <span class="tag">LSTM / Mamba</span>
+          </div>
+          <a href="#">Coming Soon</a>
+        </article>
+
+        <article class="mini-card">
+          <h3>UR5 Drawing</h3>
+          <p>
+            Robotic arm drawing project involving kinematics, trajectory execution,
+            and ROS-based manipulation control.
+          </p>
+          <div class="tags">
+            <span class="tag">UR5</span>
+            <span class="tag">Kinematics</span>
+            <span class="tag">ROS</span>
+            <span class="tag">Manipulation</span>
+          </div>
+          <a href="#">Coming Soon</a>
+        </article>
+
+        <article class="mini-card">
+          <h3>Joystick-Controlled Vehicle</h3>
+          <p>
+            Embedded robotics project involving joystick command mapping, motor control,
+            sensor-actuator integration, and mobile robot actuation.
+          </p>
+          <div class="tags">
+            <span class="tag">Arduino</span>
+            <span class="tag">Motor Control</span>
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">Robotics</span>
+          </div>
+          <a href="#">Coming Soon</a>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="two-column">
+        <div class="mini-card">
+          <h3>Computer Vision & Deep Learning</h3>
+          <p>
+            PyTorch, OpenCV, keypoint detection, heatmap regression, segmentation-guided refinement,
+            monocular depth estimation, pose estimation, model training, inference, and evaluation.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Robotics & 3D Perception</h3>
+          <p>
+            Robotics perception, camera geometry, ARKit camera intrinsics, 3D reconstruction,
+            ROS-based systems, sensor-actuator integration, and video-based perception pipelines.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Chenyan Jing. Built with GitHub Pages.
+    </footer>
+  </div>
+</body>
+</html>
