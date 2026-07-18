@@ -3,26 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chenyan Jing | Portfolio</title>
+
+  <meta
+    name="description"
+    content="Chenyan Jing — research in computer vision, surgical AI, medical robotics, world models, and robotic perception."
+  />
+
+  <title>Chenyan Jing | Research</title>
 
   <style>
     :root {
-      --bg: #f7f8fb;
-      --card: rgba(255, 255, 255, 0.78);
-      --text: #1f2937;
-      --muted: #6b7280;
-      --accent: #5b7cfa;
-      --accent-dark: #425ee8;
-      --accent-soft: #e8edff;
-      --border: rgba(120, 130, 160, 0.18);
-      --shadow: 0 20px 50px rgba(80, 90, 120, 0.12);
-      --shadow-hover: 0 30px 70px rgba(80, 90, 120, 0.18);
+      --bg: #f7f8fc;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --text: #182033;
+      --muted: #687086;
+      --accent: #5b6fe8;
+      --accent-dark: #4054cd;
+      --accent-soft: #edf0ff;
+      --border: rgba(100, 112, 150, 0.16);
+      --shadow: 0 18px 50px rgba(71, 81, 120, 0.10);
+      --radius: 24px;
+      --content-width: 980px;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -30,61 +38,42 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, #e9efff 0%, transparent 30%),
-        radial-gradient(circle at top right, #f4e9ff 0%, transparent 30%),
-        linear-gradient(180deg, #f8f9fc 0%, #eef1f8 100%);
-      color: var(--text);
-      line-height: 1.65;
+      min-height: 100vh;
       overflow-x: hidden;
+      color: var(--text);
+      font-family:
+        Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(91, 111, 232, 0.16), transparent 27%),
+        radial-gradient(circle at 90% 18%, rgba(150, 99, 230, 0.12), transparent 26%),
+        linear-gradient(180deg, #fafbff 0%, #f1f3f9 100%);
     }
 
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(91, 124, 250, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(91, 124, 250, 0.045) 1px, transparent 1px);
-      background-size: 44px 44px;
-      pointer-events: none;
       z-index: -2;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(91, 111, 232, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(91, 111, 232, 0.035) 1px, transparent 1px);
+      background-size: 46px 46px;
     }
 
-    .floating-orb {
-      position: fixed;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(91, 124, 250, 0.18), rgba(203, 180, 255, 0.18));
-      filter: blur(20px);
-      z-index: -1;
-      animation: floatOrb 10s ease-in-out infinite alternate;
+    a {
+      color: var(--accent-dark);
+      text-decoration: none;
     }
 
-    .orb-1 {
-      top: 80px;
-      left: -120px;
-    }
-
-    .orb-2 {
-      right: -140px;
-      bottom: 80px;
-      animation-delay: 2s;
-    }
-
-    @keyframes floatOrb {
-      from {
-        transform: translateY(0px) translateX(0px);
-      }
-      to {
-        transform: translateY(40px) translateX(35px);
-      }
+    a:hover {
+      color: var(--accent);
     }
 
     .container {
-      width: min(1120px, 92%);
+      width: min(var(--content-width), 92%);
       margin: 0 auto;
     }
 
@@ -92,24 +81,24 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(20px);
-      background: rgba(248, 249, 252, 0.72);
       border-bottom: 1px solid var(--border);
+      background: rgba(248, 249, 253, 0.80);
+      backdrop-filter: blur(18px);
     }
 
     .nav-inner {
-      height: 72px;
+      min-height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
     }
 
     .logo {
+      color: var(--text);
+      font-size: 1.08rem;
       font-weight: 800;
       letter-spacing: -0.03em;
-      font-size: 1.15rem;
-      color: var(--text);
-      text-decoration: none;
     }
 
     .logo span {
@@ -118,16 +107,15 @@
 
     .nav-links {
       display: flex;
-      gap: 26px;
       align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
       color: var(--muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: color 0.25s ease;
+      font-size: 0.92rem;
+      font-weight: 650;
     }
 
     .nav-links a:hover {
@@ -135,872 +123,803 @@
     }
 
     .hero {
-      min-height: 82vh;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 230px;
+      gap: 58px;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 90px 0 80px;
-    }
-
-    .avatar-badge {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #9db8ff 0%, #c3a6ff 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.8rem;
-      font-weight: 900;
-      color: #101322;
-      margin-bottom: 34px;
-      box-shadow: 0 24px 60px rgba(91, 124, 250, 0.22);
-      animation: floatCard 5s ease-in-out infinite alternate;
-    }
-
-    @keyframes floatCard {
-      from {
-        transform: translateY(0);
-      }
-      to {
-        transform: translateY(-14px);
-      }
+      padding: 96px 0 76px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
+      margin-bottom: 20px;
+      padding: 7px 12px;
+      border: 1px solid rgba(91, 111, 232, 0.14);
       border-radius: 999px;
+      color: var(--accent-dark);
       background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 0.9rem;
-      font-weight: 700;
-      margin-bottom: 24px;
-      animation: fadeUp 0.7s ease both;
+      font-size: 0.84rem;
+      font-weight: 750;
     }
 
     .dot {
       width: 8px;
       height: 8px;
-      background: var(--accent);
       border-radius: 50%;
-      animation: pulse 1.8s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(91, 124, 250, 0.45);
-      }
-      70% {
-        box-shadow: 0 0 0 10px rgba(91, 124, 250, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(91, 124, 250, 0);
-      }
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(91, 111, 232, 0.10);
     }
 
     h1 {
-      font-size: clamp(3rem, 7vw, 5.6rem);
-      line-height: 1;
+      margin-bottom: 18px;
+      font-size: clamp(3.1rem, 7vw, 5.4rem);
+      line-height: 0.98;
       letter-spacing: -0.075em;
-      margin-bottom: 20px;
-      animation: fadeUp 0.8s ease both;
-      animation-delay: 0.08s;
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #1f2937 0%, #5b7cfa 48%, #8b5cf6 100%);
+      background: linear-gradient(135deg, #202a44 5%, #5b6fe8 52%, #8b5bd4 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-subtitle {
-      font-size: clamp(1.45rem, 3vw, 2.3rem);
-      font-weight: 400;
-      color: #697386;
-      margin-bottom: 28px;
+    .hero-role {
+      margin-bottom: 20px;
+      color: #555f76;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 500;
       letter-spacing: -0.025em;
-      animation: fadeUp 0.8s ease both;
-      animation-delay: 0.16s;
     }
 
-    .subtitle {
-      font-size: 1.16rem;
+    .hero-copy {
+      max-width: 700px;
+      margin-bottom: 26px;
       color: var(--muted);
-      max-width: 860px;
-      margin: 0 auto 34px;
-      animation: fadeUp 0.8s ease both;
-      animation-delay: 0.24s;
+      font-size: 1.04rem;
     }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-      animation: fadeUp 0.8s ease both;
-      animation-delay: 0.32s;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 20px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: all 0.25s ease;
-      border: 1px solid var(--border);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-      box-shadow: 0 12px 24px rgba(91, 124, 250, 0.28);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      background: var(--accent-dark);
-      box-shadow: 0 18px 35px rgba(91, 124, 250, 0.32);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.75);
+    .hero-copy strong {
       color: var(--text);
     }
 
-    .btn-secondary:hover {
-      transform: translateY(-3px);
-      background: white;
-      color: var(--accent);
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .section {
-      padding: 86px 0;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: -0.055em;
-      margin-bottom: 14px;
-    }
-
-    .section-intro {
-      color: var(--muted);
-      max-width: 780px;
-      margin-bottom: 38px;
-      font-size: 1.05rem;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-    }
-
-    .glass-card {
-      background: var(--card);
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 15px;
       border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 28px;
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.74);
+      font-size: 0.90rem;
+      font-weight: 720;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .pill-link:hover {
+      transform: translateY(-2px);
+      color: var(--accent-dark);
+      background: #fff;
+    }
+
+    .profile-wrap {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 220px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center;
+      border: 8px solid rgba(255, 255, 255, 0.92);
+      border-radius: 30px;
+      background: #e7eafa;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .glass-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hover);
+    section {
+      padding: 62px 0;
+      scroll-margin-top: 82px;
     }
 
-    .glass-card h3 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
+    .section-heading {
+      margin-bottom: 28px;
     }
 
-    .glass-card p {
+    .section-heading h2 {
+      margin-bottom: 8px;
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      line-height: 1.12;
+      letter-spacing: -0.055em;
+    }
+
+    .section-heading p {
+      max-width: 720px;
       color: var(--muted);
+    }
+
+    .about-panel,
+    .contact-panel {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .about-panel p + p {
+      margin-top: 14px;
     }
 
     .tag-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
+      gap: 9px;
+      margin-top: 20px;
     }
 
     .tag {
-      padding: 7px 12px;
+      padding: 6px 11px;
       border-radius: 999px;
-      background: rgba(91, 124, 250, 0.09);
-      color: #4f63d7;
-      font-size: 0.84rem;
+      color: #4e5fc7;
+      background: rgba(91, 111, 232, 0.09);
+      font-size: 0.82rem;
       font-weight: 700;
     }
 
-    .projects-grid {
+    .news-list {
+      border-top: 1px solid var(--border);
+    }
+
+    .news-item {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .project-visual {
-      height: 170px;
+      grid-template-columns: 105px minmax(0, 1fr);
+      gap: 18px;
+      padding: 18px 0;
       border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(31, 41, 55, 0.68);
-      font-weight: 850;
-      letter-spacing: -0.035em;
-      font-size: 1.16rem;
-      text-align: center;
-      padding: 18px;
     }
 
-    .surgical-visual {
-      background:
-        linear-gradient(135deg, rgba(91, 124, 250, 0.25), rgba(139, 92, 246, 0.18)),
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.9), transparent 40%);
-    }
-
-    .retina-visual {
-      background:
-        linear-gradient(135deg, rgba(125, 211, 252, 0.28), rgba(196, 181, 253, 0.2)),
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.92), transparent 40%);
-    }
-
-    .depth-visual {
-      background:
-        linear-gradient(135deg, rgba(147, 197, 253, 0.28), rgba(167, 139, 250, 0.22)),
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.92), transparent 40%);
-    }
-
-    .temporal-visual {
-      background:
-        linear-gradient(135deg, rgba(165, 180, 252, 0.3), rgba(216, 180, 254, 0.2)),
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.92), transparent 40%);
-    }
-
-    .robot-visual {
-      background:
-        linear-gradient(135deg, rgba(191, 219, 254, 0.32), rgba(221, 214, 254, 0.22)),
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.92), transparent 40%);
-    }
-
-    .vehicle-visual {
-      background:
-        linear-gradient(135deg, rgba(219, 234, 254, 0.4), rgba(233, 213, 255, 0.24)),
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.92), transparent 40%);
-    }
-
-    .project-content {
-      padding: 24px;
-    }
-
-    .project-content h3 {
-      font-size: 1.16rem;
-      line-height: 1.28;
-      margin-bottom: 10px;
-      letter-spacing: -0.025em;
-    }
-
-    .project-content p {
-      color: var(--muted);
-      font-size: 0.94rem;
-      margin-bottom: 18px;
-    }
-
-    .project-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 18px;
-    }
-
-    .small-link {
-      text-decoration: none;
-      color: var(--accent);
-      background: rgba(91, 124, 250, 0.09);
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-size: 0.84rem;
-      font-weight: 750;
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    .small-link:hover {
-      background: rgba(91, 124, 250, 0.16);
+    .news-date {
       color: var(--accent-dark);
+      font-size: 0.90rem;
+      font-weight: 780;
+    }
+
+    .news-text {
+      color: var(--muted);
+    }
+
+    .news-text strong {
+      color: var(--text);
     }
 
     .publication-list {
       display: grid;
-      gap: 18px;
+      gap: 22px;
     }
 
     .publication {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-      background: var(--card);
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 26px;
+      padding: 22px;
       border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 28px;
+      border-radius: var(--radius);
+      background: var(--surface);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(16px);
+    }
+
+    .paper-visual {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.85), transparent 28%),
+        linear-gradient(135deg, rgba(91, 111, 232, 0.22), rgba(139, 91, 212, 0.16));
+    }
+
+    .paper-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .publication h3 {
       margin-bottom: 8px;
-      font-size: 1.18rem;
-      line-height: 1.35;
+      font-size: 1.16rem;
+      line-height: 1.42;
+      letter-spacing: -0.02em;
     }
 
-    .publication p {
+    .authors,
+    .venue,
+    .paper-summary {
       color: var(--muted);
-    }
-
-    .status {
-      white-space: nowrap;
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: #eef2ff;
-      color: #4f63d7;
-      font-weight: 800;
-      font-size: 0.86rem;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .contact-card {
-      text-align: center;
-      padding: 56px 28px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.8), rgba(238,242,255,0.8));
-      border: 1px solid var(--border);
-      border-radius: 36px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
-    }
-
-    .contact-card h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      letter-spacing: -0.06em;
-      margin-bottom: 14px;
-    }
-
-    .contact-card p {
-      color: var(--muted);
-      margin-bottom: 26px;
-    }
-
-    footer {
-      padding: 34px 0;
-      color: var(--muted);
-      text-align: center;
       font-size: 0.92rem;
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .authors strong {
+      color: var(--text);
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: all 0.7s ease;
+    .venue {
+      margin-top: 4px;
+      font-style: italic;
     }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    .paper-summary {
+      margin-top: 10px;
     }
 
-    @media (max-width: 1000px) {
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .paper-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 14px;
+    }
 
-      .skills-grid {
+    .paper-link,
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 11px;
+      border-radius: 999px;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      font-size: 0.82rem;
+      font-weight: 760;
+    }
+
+    .status-badge {
+      color: #7a5517;
+      background: #fff4d9;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card h3 {
+      margin-bottom: 9px;
+      font-size: 1.08rem;
+      line-height: 1.38;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .contact-panel {
+      text-align: center;
+    }
+
+    .contact-panel h2 {
+      margin-bottom: 10px;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: -0.055em;
+    }
+
+    .contact-panel p {
+      max-width: 650px;
+      margin: 0 auto 22px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 30px 0 38px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
         grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 780px) {
-      .about-grid {
-        grid-template-columns: 1fr;
+        gap: 36px;
+        padding-top: 72px;
       }
 
-      .projects-grid {
-        grid-template-columns: 1fr;
+      .profile-wrap {
+        grid-row: 1;
+        justify-content: flex-start;
+      }
+
+      .profile-photo {
+        width: 165px;
+        border-radius: 24px;
       }
 
       .publication {
-        flex-direction: column;
+        grid-template-columns: 1fr;
       }
 
-      .avatar-badge {
-        width: 125px;
-        height: 125px;
-        font-size: 3.1rem;
+      .paper-visual {
+        max-width: 430px;
       }
     }
 
-    @media (max-width: 640px) {
-      .nav-links {
+    @media (max-width: 680px) {
+      .nav-inner {
+        min-height: 62px;
+      }
+
+      .nav-links a:not(:last-child) {
         display: none;
       }
 
       .hero {
-        min-height: auto;
-        padding: 70px 0 64px;
+        padding: 58px 0 46px;
       }
 
-      .section {
-        padding: 64px 0;
+      h1 {
+        font-size: clamp(3rem, 16vw, 4.5rem);
       }
 
-      .hero-buttons {
-        flex-direction: column;
-        width: 100%;
+      section {
+        padding: 48px 0;
       }
 
-      .btn {
-        width: 100%;
+      .news-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pill-link {
+        flex: 1 1 auto;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="floating-orb orb-1"></div>
-  <div class="floating-orb orb-2"></div>
-
   <nav>
     <div class="container nav-inner">
       <a class="logo" href="#home">Chenyan <span>Jing</span></a>
 
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#projects">Projects</a>
+        <a href="#news">News</a>
         <a href="#publications">Publications</a>
-        <a href="#skills">Skills</a>
-        <a href="CV_new.pdf" target="_blank">CV</a>
-        <a href="#contact">Contact</a>
+        <a href="#projects">Projects</a>
+        <a href="Chenyan_Jing_CV.pdf" target="_blank" rel="noopener">CV</a>
       </div>
     </div>
   </nav>
 
   <main>
-    <section id="home" class="container hero">
-      <div class="avatar-badge">CJ</div>
-
-      <div class="eyebrow">
-        <span class="dot"></span>
-        Computer Vision · Surgical AI · Medical Robotics · 3D Perception
-      </div>
-
-      <h1>
-        Hi, I'm <span class="gradient-text">Chenyan Jing</span>
-      </h1>
-
-      <h2 class="hero-subtitle">
-        M.S.E. Robotics Student at Johns Hopkins University
-      </h2>
-
-      <p class="subtitle">
-        I build vision-based perception systems for surgical robotics and medical AI,
-        with experience in multi-frame keypoint localization, segmentation-guided refinement,
-        monocular depth estimation, temporal modeling, and robotic perception pipelines.
-      </p>
-
-      <div class="hero-buttons">
-        <a class="btn btn-primary" href="#projects">View My Work</a>
-        <a class="btn btn-secondary" href="CV_new.pdf" target="_blank">Download CV</a>
-        <a class="btn btn-secondary" href="mailto:jingchenyan7@gmail.com">Get In Touch</a>
-      </div>
-    </section>
-
-    <section id="about" class="container section reveal">
-      <h2 class="section-title">About</h2>
-
-      <p class="section-intro">
-        I am a Robotics master's student at Johns Hopkins University working at the intersection
-        of computer vision, medical image analysis, and robotics perception. My current work focuses
-        on surgical video understanding, structured keypoint localization, temporal modeling, and
-        vision-based perception systems for medical robotics.
-      </p>
-
-      <div class="about-grid">
-        <div class="glass-card">
-          <h3>Research Interests</h3>
-          <p>
-            I am interested in building perception systems that can understand surgical scenes,
-            localize functional landmarks, estimate 3D structure, and support downstream robotic
-            reasoning in complex medical environments.
-          </p>
-
-          <div class="tag-row">
-            <span class="tag">Surgical Video Understanding</span>
-            <span class="tag">Medical AI</span>
-            <span class="tag">3D Vision</span>
-            <span class="tag">Robotics Perception</span>
-          </div>
+    <header id="home" class="container hero">
+      <div>
+        <div class="eyebrow">
+          <span class="dot"></span>
+          Computer Vision · Surgical AI · Robotics
         </div>
 
-        <div class="glass-card">
-          <h3>Current Direction</h3>
-          <p>
-            My recent projects explore mask-guided structural priors for surgical tool keypoint
-            localization, retinal motion forecasting for robotic subretinal injection, monocular
-            depth-based 3D perception, and temporal modeling for surgical tracking.
-          </p>
+        <h1>
+          Hi, I'm <span class="gradient-text">Chenyan Jing</span>
+        </h1>
 
-          <div class="tag-row">
-            <span class="tag">Keypoint Detection</span>
-            <span class="tag">Temporal Modeling</span>
-            <span class="tag">Depth Estimation</span>
-            <span class="tag">PyTorch</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="container section reveal">
-      <h2 class="section-title">Selected Projects</h2>
-
-      <p class="section-intro">
-        Research and engineering projects in surgical video understanding, medical vision,
-        temporal modeling, 3D perception, and robotic systems.
-      </p>
-
-      <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-visual surgical-visual">
-            Surgical Keypoint Localization
-          </div>
-
-          <div class="project-content">
-            <h3>Mask-Guided Structural Priors for Surgical Tool Keypoint Localization</h3>
-
-            <p>
-              Built a multi-frame surgical video model for tool tip and anchor localization,
-              integrating SAM2-derived mask priors with heatmap-based coarse-to-refine prediction.
-              Implemented PyTorch training, inference, multi-GPU execution, heatmap generation,
-              and quantitative evaluation.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">Surgical Video</span>
-              <span class="tag">Keypoint Detection</span>
-              <span class="tag">SAM2</span>
-              <span class="tag">PyTorch</span>
-            </div>
-
-            <div class="project-links">
-              <a class="small-link" href="https://github.com/jingchenyan3030/Surgical_Tool_Tracking" target="_blank">GitHub</a>
-              <a class="small-link" href="#publications">Paper under review</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-visual retina-visual">
-            Retinal Motion Compensation
-          </div>
-
-          <div class="project-content">
-            <h3>Predictive Retinal Motion Compensation for Robotic Subretinal Injection</h3>
-
-            <p>
-              Developed an iOCT and RGB-D vision pipeline for retinal motion compensation.
-              Segmented retinal membranes, applied RANSAC filtering to remove outliers,
-              extracted needle-to-retina distance signals, and benchmarked LSTM and Mamba
-              models for temporal motion forecasting.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">Medical Robotics</span>
-              <span class="tag">RGB-D</span>
-              <span class="tag">RANSAC</span>
-              <span class="tag">Mamba</span>
-            </div>
-
-            <div class="project-links">
-              <a class="small-link" href="CV_new.pdf" target="_blank">See CV</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-visual depth-visual">
-            Monocular 3D Perception
-          </div>
-
-          <div class="project-content">
-            <h3>Monocular 3D Human Pose and Metric Depth Estimation</h3>
-
-            <p>
-              Built a monocular 3D perception pipeline combining YOLOv8 keypoint detection
-              and Depth Anything V2 dense depth estimation. Calibrated monocular depth scale
-              using known human height and 2D bounding box height, then back-projected 2D
-              keypoints into 3D using camera intrinsics.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">3D Vision</span>
-              <span class="tag">YOLOv8</span>
-              <span class="tag">Depth Anything V2</span>
-              <span class="tag">Camera Intrinsics</span>
-            </div>
-
-            <div class="project-links">
-              <a class="small-link" href="CV_new.pdf" target="_blank">See CV</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-visual temporal-visual">
-            Temporal Surgical Tracking
-          </div>
-
-          <div class="project-content">
-            <h3>Temporal Decoder for Surgical Tool Tracking</h3>
-
-            <p>
-              Developed a temporal decoder for surgical tool representation tracking.
-              Extracted frame-level visual features with an HRNet backbone and applied
-              transformer-based temporal modeling to improve video-level consistency for
-              surgical action and tool state prediction.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">HRNet</span>
-              <span class="tag">Transformer</span>
-              <span class="tag">Temporal Modeling</span>
-              <span class="tag">Surgical AI</span>
-            </div>
-
-            <div class="project-links">
-              <a class="small-link" href="CV_new.pdf" target="_blank">See CV</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-visual robot-visual">
-            Robotic Manipulation
-          </div>
-
-          <div class="project-content">
-            <h3>UR5 Robotic Drawing and Manipulation</h3>
-
-            <p>
-              Implemented UR5 inverse kinematics and resolved-rate motion control.
-              Generated executable robot trajectories from target drawing paths and integrated
-              trajectory planning with robot execution for a robotic drawing task.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">UR5</span>
-              <span class="tag">Robot Kinematics</span>
-              <span class="tag">Motion Control</span>
-              <span class="tag">ROS</span>
-            </div>
-
-            <div class="project-links">
-              <a class="small-link" href="CV_new.pdf" target="_blank">See CV</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-visual vehicle-visual">
-            Embedded Robotics
-          </div>
-
-          <div class="project-content">
-            <h3>Joystick-Controlled Vehicle with Sensor Integration</h3>
-
-            <p>
-              Built an Arduino-based joystick-controlled vehicle with dual motor drivers.
-              Implemented PID control for motion stability and trajectory tracking, and
-              integrated infrared sensing for basic autonomous driving functions.
-            </p>
-
-            <div class="tag-row">
-              <span class="tag">Arduino</span>
-              <span class="tag">PID Control</span>
-              <span class="tag">Motor Driver</span>
-              <span class="tag">Sensors</span>
-            </div>
-
-            <div class="project-links">
-              <a class="small-link" href="CV_new.pdf" target="_blank">See CV</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="publications" class="container section reveal">
-      <h2 class="section-title">Publications</h2>
-
-      <p class="section-intro">
-        Manuscripts, submissions, and collaborative research work.
-      </p>
-
-      <div class="publication-list">
-        <div class="publication">
-          <div>
-            <h3>Dense Structural Priors for Sparse Functional Landmark Localization in Surgical Videos</h3>
-            <p>
-              Chenyan Jing, et al. Submitted to SPIE Medical Imaging.
-              This work studies action-dependent surgical tool landmark localization using
-              multi-frame heatmap prediction and mask-derived structural priors.
-            </p>
-          </div>
-          <div class="status">Submitted</div>
+        <div class="hero-role">
+          Researcher in Surgical AI and Robotic Perception
         </div>
 
-        <div class="publication">
-          <div>
-            <h3>AffordTissue: Dense Affordance Prediction for Surgical Scene Understanding</h3>
-            <p>
-              Contributed to a dense affordance prediction project under review at MICCAI.
-            </p>
-          </div>
-          <div class="status">Under Review</div>
-        </div>
-
-        <div class="publication">
-          <div>
-            <h3>SAW: Surgical Action World Model</h3>
-            <p>
-              Contributed to a surgical action world model project under review at MICCAI.
-            </p>
-          </div>
-          <div class="status">Under Review</div>
-        </div>
-
-        <div class="publication">
-          <div>
-            <h3>Predictive Retinal Motion Compensation for Robotic Subretinal Injection</h3>
-            <p>
-              Contributed to a retinal motion compensation project under review for an IEEE T-ASE special issue.
-            </p>
-          </div>
-          <div class="status">Under Review</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="container section reveal">
-      <h2 class="section-title">Skills</h2>
-
-      <p class="section-intro">
-        Technical skills across computer vision, deep learning, robotics, and engineering implementation.
-      </p>
-
-      <div class="skills-grid">
-        <div class="glass-card">
-          <h3>Programming</h3>
-          <p>
-            Python, C++, MATLAB, Git, Linux, NumPy, OpenCV, model training, inference,
-            evaluation, and multi-GPU workflows.
-          </p>
-
-          <div class="tag-row">
-            <span class="tag">Python</span>
-            <span class="tag">C++</span>
-            <span class="tag">MATLAB</span>
-            <span class="tag">Linux</span>
-          </div>
-        </div>
-
-        <div class="glass-card">
-          <h3>Computer Vision & Deep Learning</h3>
-          <p>
-            PyTorch, UNet, ViT, Transformer, SAM2, YOLOv8-Pose, HRNet,
-            Depth Anything V2, heatmap regression, keypoint detection, segmentation,
-            and monocular depth estimation.
-          </p>
-
-          <div class="tag-row">
-            <span class="tag">PyTorch</span>
-            <span class="tag">SAM2</span>
-            <span class="tag">YOLOv8</span>
-            <span class="tag">Depth Anything V2</span>
-          </div>
-        </div>
-
-        <div class="glass-card">
-          <h3>Robotics</h3>
-          <p>
-            Robot kinematics, resolved-rate control, sensor integration, ROS2,
-            Arduino, motion control, trajectory execution, and robotic perception.
-          </p>
-
-          <div class="tag-row">
-            <span class="tag">ROS2</span>
-            <span class="tag">Kinematics</span>
-            <span class="tag">Control</span>
-            <span class="tag">Arduino</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="container section reveal">
-      <div class="contact-card">
-        <h2>Let’s Connect</h2>
-
-        <p>
-          I am open to research opportunities in computer vision, surgical AI,
-          medical image analysis, 3D perception, and robotics perception.
+        <p class="hero-copy">
+          I recently completed my M.S.E. in Robotics at
+          <strong>Johns Hopkins University</strong>. My research lies at the
+          intersection of computer vision, surgical AI, and robotic perception.
+          I am interested in building perception and world models that help
+          intelligent systems understand surgical scenes, reason about
+          tool–tissue interactions, and support safe robotic autonomy.
         </p>
 
-        <a class="btn btn-primary" href="mailto:jingchenyan7@gmail.com">
-          jingchenyan7@gmail.com
-        </a>
+        <div class="link-row">
+          <a class="pill-link" href="mailto:jingchenyan7@gmail.com">Email</a>
+
+          <a
+            class="pill-link"
+            href="Chenyan_Jing_CV.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            CV
+          </a>
+
+          <a
+            class="pill-link"
+            href="https://scholar.google.com/citations?user=0WBLS4MAAAAJ&hl=en"
+            target="_blank"
+            rel="noopener"
+          >
+            Google Scholar
+          </a>
+
+          <a
+            class="pill-link"
+            href="https://github.com/jingchenyan3030"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="profile-wrap">
+        <img
+          class="profile-photo"
+          src="assets/profile.jpg"
+          alt="Chenyan Jing"
+        />
+      </div>
+    </header>
+
+    <section id="about" class="container">
+      <div class="section-heading">
+        <h2>About</h2>
+      </div>
+
+      <div class="about-panel">
+        <p>
+          My work focuses on visual understanding for medical and robotic
+          systems, including functional landmark localization, dense tissue
+          affordance prediction, temporal modeling, depth-aware perception, and
+          generative world models for surgical video.
+        </p>
+
+        <p>
+          More broadly, I am interested in how structured visual representations
+          can connect perception, prediction, and action in complex real-world
+          environments.
+        </p>
+
+        <div class="tag-row">
+          <span class="tag">Surgical Video Understanding</span>
+          <span class="tag">Medical AI</span>
+          <span class="tag">World Models</span>
+          <span class="tag">Vision-Language-Action</span>
+          <span class="tag">3D Vision</span>
+          <span class="tag">Robotic Perception</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="container">
+      <div class="section-heading">
+        <h2>News</h2>
+        <p>Recent research and academic updates.</p>
+      </div>
+
+      <div class="news-list">
+        <div class="news-item">
+          <div class="news-date">Jun 2026</div>
+
+          <div class="news-text">
+            Our paper
+            <strong>
+              Dense Structural Priors for Sparse Functional Landmark
+              Localization in Surgical Videos
+            </strong>
+            is available on arXiv.
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">May 2026</div>
+
+          <div class="news-text">
+            I completed my M.S.E. in Robotics at Johns Hopkins University.
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">Apr 2026</div>
+
+          <div class="news-text">
+            Our paper <strong>AffordTissue</strong> is available on arXiv.
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">Mar 2026</div>
+
+          <div class="news-text">
+            Our paper
+            <strong>SAW: Toward a Surgical Action World Model</strong>
+            is available on arXiv.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="container">
+      <div class="section-heading">
+        <h2>Selected Publications</h2>
+
+        <p>
+          Selected work in surgical perception, affordance prediction,
+          world modeling, and medical robotics.
+        </p>
+      </div>
+
+      <div class="publication-list">
+        <article class="publication">
+          <div class="paper-visual">
+            <img
+              src="assets/dense-structural-priors.jpg"
+              alt="Dense Structural Priors paper teaser"
+            />
+          </div>
+
+          <div>
+            <h3>
+              Dense Structural Priors for Sparse Functional Landmark
+              Localization in Surgical Videos
+            </h3>
+
+            <p class="authors">
+              <strong>Chenyan Jing</strong>, Hao Ding,
+              Lalithkumar Seenivasan, Jacob M. Delgado López,
+              Mathias Unberath
+            </p>
+
+            <p class="venue">arXiv, 2026</p>
+
+            <p class="paper-summary">
+              A lightweight refinement framework that uses
+              vision-foundation-model structural priors to improve
+              action-dependent surgical tip and anchor localization without
+              manual pixel-level mask annotations.
+            </p>
+
+            <div class="paper-links">
+              <a
+                class="paper-link"
+                href="https://arxiv.org/abs/2606.31007"
+                target="_blank"
+                rel="noopener"
+              >
+                arXiv
+              </a>
+
+              <a
+                class="paper-link"
+                href="https://arxiv.org/pdf/2606.31007"
+                target="_blank"
+                rel="noopener"
+              >
+                PDF
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="paper-visual">
+            <img
+              src="assets/affordtissue.jpg"
+              alt="AffordTissue paper teaser"
+            />
+          </div>
+
+          <div>
+            <h3>
+              AffordTissue: Dense Affordance Prediction for Tool-Action
+              Specific Tissue Interaction
+            </h3>
+
+            <p class="authors">
+              Aiza Maksutova, Lalithkumar Seenivasan, Hao Ding,
+              Jiru Xu, Chenhao Yu, <strong>Chenyan Jing</strong>,
+              Yiqing Shen, Mathias Unberath
+            </p>
+
+            <p class="venue">arXiv, 2026</p>
+
+            <p class="paper-summary">
+              A multimodal framework for predicting tool-action-specific tissue
+              affordance regions as dense heatmaps in cholecystectomy videos.
+            </p>
+
+            <div class="paper-links">
+              <a
+                class="paper-link"
+                href="https://arxiv.org/abs/2604.01371"
+                target="_blank"
+                rel="noopener"
+              >
+                arXiv
+              </a>
+
+              <a
+                class="paper-link"
+                href="https://arxiv.org/pdf/2604.01371"
+                target="_blank"
+                rel="noopener"
+              >
+                PDF
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="paper-visual">
+            <img
+              src="assets/saw.jpg"
+              alt="SAW surgical action world model paper teaser"
+            />
+          </div>
+
+          <div>
+            <h3>
+              SAW: Toward a Surgical Action World Model via Controllable
+              and Scalable Video Generation
+            </h3>
+
+            <p class="authors">
+              Sampath Rapuri, Lalithkumar Seenivasan, Dominik Schneider,
+              Roger Soberanis-Mukul, Yufan He, Hao Ding, Jiru Xu,
+              Chenhao Yu, <strong>Chenyan Jing</strong>, Pengfei Guo,
+              Daguang Xu, Mathias Unberath
+            </p>
+
+            <p class="venue">arXiv, 2026</p>
+
+            <p class="paper-summary">
+              A controllable surgical video-generation framework conditioned on
+              language, a reference scene, tissue affordance masks, and tool-tip
+              trajectories for surgical AI and simulation.
+            </p>
+
+            <div class="paper-links">
+              <a
+                class="paper-link"
+                href="https://arxiv.org/abs/2603.13024"
+                target="_blank"
+                rel="noopener"
+              >
+                arXiv
+              </a>
+
+              <a
+                class="paper-link"
+                href="https://arxiv.org/pdf/2603.13024"
+                target="_blank"
+                rel="noopener"
+              >
+                PDF
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="paper-visual">
+            <img
+              src="assets/retinal-motion.jpg"
+              alt="Retinal motion compensation project teaser"
+            />
+          </div>
+
+          <div>
+            <h3>
+              Predictive Retinal Motion Compensation for Robotic
+              Subretinal Injection
+            </h3>
+
+            <p class="authors">
+              <strong>Chenyan Jing</strong>, et al.
+            </p>
+
+            <p class="venue">Manuscript under review, 2026</p>
+
+            <p class="paper-summary">
+              A vision-based framework for retinal motion estimation and
+              temporal forecasting to support safer robotic subretinal
+              injection.
+            </p>
+
+            <div class="paper-links">
+              <span class="status-badge">Under Review</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="container">
+      <div class="section-heading">
+        <h2>Selected Projects</h2>
+
+        <p>
+          A small selection of additional research and engineering work.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Monocular 3D Human Pose and Metric Depth Estimation</h3>
+
+          <p>
+            Combined YOLOv8 keypoint detection and Depth Anything V2 to recover
+            monocular 3D human pose, calibrate metric scale, and back-project
+            image-space landmarks using camera intrinsics.
+          </p>
+
+          <div class="tag-row">
+            <span class="tag">3D Vision</span>
+            <span class="tag">Human Pose</span>
+            <span class="tag">Depth Estimation</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>UR5 Robotic Drawing and Manipulation</h3>
+
+          <p>
+            Implemented inverse kinematics, resolved-rate motion control, and
+            executable trajectory generation for a UR5 robotic drawing task.
+          </p>
+
+          <div class="tag-row">
+            <span class="tag">Robot Kinematics</span>
+            <span class="tag">Motion Control</span>
+            <span class="tag">ROS</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <div class="contact-panel">
+        <h2>Let's Connect</h2>
+
+        <p>
+          I am interested in research opportunities involving computer vision,
+          surgical AI, medical robotics, world models, and robotic perception.
+        </p>
+
+        <div class="link-row" style="justify-content: center;">
+          <a
+            class="pill-link"
+            href="mailto:jingchenyan7@gmail.com"
+          >
+            jingchenyan7@gmail.com
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -1008,24 +927,5 @@
   <footer>
     © 2026 Chenyan Jing. Built with GitHub Pages.
   </footer>
-
-  <script>
-    const revealElements = document.querySelectorAll(".reveal");
-
-    const revealOnScroll = () => {
-      for (const element of revealElements) {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const revealPoint = 100;
-
-        if (elementTop < windowHeight - revealPoint) {
-          element.classList.add("active");
-        }
-      }
-    };
-
-    window.addEventListener("scroll", revealOnScroll);
-    window.addEventListener("load", revealOnScroll);
-  </script>
 </body>
 </html>
